@@ -48,18 +48,15 @@ This is a Spanish-language dice/blackjack web game featuring anime-style opponen
 - Nagatoro (Trickster)
 
 ## Recent Changes
-- 2025-10-28: Successfully imported from GitHub and configured for Replit
-  - Organized file structure (moved JS files to js/ folder)
-  - Created assets folder structure for game media
-  - Set up Python HTTP server for local development on port 5000
-  - Fixed JavaScript loading order (added config.js to index.html)
-  - Removed duplicate constant declarations in state.js
-  - Configured deployment settings for Autoscale
-  - Added comprehensive mobile optimizations for Android devices (especially Samsung S25 Ultra)
-  - Added mobile-specific meta tags for web app capability
-  - Implemented responsive CSS with touch-friendly buttons and layouts
-  - Created ANDROID_LOCAL_SETUP.md guide for running locally on Android
-  - Game is fully functional (character images need to be added to assets/img/)
+- 2025-10-28: Successfully imported from GitHub and configured for Replit environment
+  - Python 3.12.11 detected and ready
+  - Configured workflow "Server" to run Python HTTP server on port 5000
+  - Server configured with cache-control headers disabled for development
+  - Created assets/img/ and assets/video/ directories for game media
+  - Deployment configured for Autoscale (production-ready)
+  - Game verified working - all 7 opponents displayed with correct betting amounts
+  - Game fully functional (character images optional - can be added to assets/img/)
+  - Previous setup: JS files organized in js/ folder, mobile optimizations complete
 
 ## User Preferences
 None documented yet.

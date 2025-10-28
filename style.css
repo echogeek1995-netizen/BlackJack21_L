@@ -19,13 +19,12 @@ body {
     text-align: center;
     padding: 20px;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .pantalla.activa {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 h1, h2, h3 {
@@ -166,6 +165,11 @@ h1 {
 }
 
 /* === HUD DEL JUEGO === */
+/* Ocultar avatar del oponente durante el juego para UI limpio */
+.avatar-juego {
+    display: none !important;
+}
+
 .marcador-principal-container {
     position: fixed;
     top: 20px;

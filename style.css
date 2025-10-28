@@ -493,3 +493,269 @@ button:disabled {
 ::-webkit-scrollbar-thumb:hover {
     background: #666;
 }
+
+/* ========================================
+   MOBILE OPTIMIZATIONS
+   Optimized for Samsung S25 Ultra and Android devices
+   ======================================== */
+
+/* Base mobile improvements */
+@media screen and (max-width: 1024px) {
+    body {
+        font-size: 16px;
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+        touch-action: manipulation;
+    }
+    
+    /* Larger, more touch-friendly buttons */
+    button {
+        min-height: 48px;
+        min-width: 48px;
+        padding: 12px 20px;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    
+    /* Main menu optimizations */
+    .pantalla {
+        padding: 20px 15px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+        margin: 15px 0;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    /* Opponent grid - better mobile layout */
+    .oponentes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 15px;
+        padding: 10px;
+    }
+    
+    .oponente-btn {
+        width: 100%;
+        max-width: 200px;
+        padding: 12px;
+        min-height: 320px;
+    }
+    
+    .oponente-btn img {
+        height: 200px;
+    }
+    
+    /* Touch feedback */
+    .oponente-btn:active {
+        transform: scale(0.95);
+        background: rgba(255,255,255,0.2);
+    }
+    
+    /* Chips display */
+    .fichas-global-display {
+        font-size: 1.5rem;
+        padding: 12px 20px;
+        top: 15px;
+        right: 15px;
+    }
+    
+    /* Game controls */
+    .controles-inferiores {
+        padding: 15px;
+    }
+    
+    .controles-inferiores button {
+        font-size: 18px;
+        padding: 14px 24px;
+        margin: 8px;
+    }
+    
+    /* Ability buttons */
+    .habilidad-btn {
+        font-size: 16px;
+        padding: 10px 16px;
+        margin: 6px;
+    }
+    
+    /* Menu footer buttons */
+    .menu-footer button {
+        font-size: 18px;
+        padding: 14px 24px;
+        margin: 10px 6px;
+        min-width: 140px;
+    }
+    
+    /* Modals */
+    .modal-contenido {
+        width: 90%;
+        max-width: 500px;
+        padding: 25px;
+        margin: 20px;
+    }
+    
+    /* Shop items */
+    .tienda-item {
+        padding: 15px;
+        margin: 12px 0;
+    }
+    
+    .tienda-item button {
+        min-width: 100px;
+    }
+    
+    /* Gallery */
+    .galeria-thumb {
+        min-width: 120px;
+        min-height: 120px;
+    }
+    
+    /* Dice animation */
+    .dado {
+        width: 100px;
+        height: 100px;
+    }
+    
+    /* Score display */
+    .marcador {
+        font-size: 1.3rem;
+        padding: 15px;
+    }
+    
+    .resultado-puntuacion {
+        font-size: 2.5rem;
+    }
+}
+
+/* Large phones and phablets (Samsung S25 Ultra, etc.) */
+@media screen and (min-width: 400px) and (max-width: 1024px) {
+    .oponentes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .oponente-btn {
+        max-width: 240px;
+    }
+    
+    h1 {
+        font-size: 2.3rem;
+    }
+}
+
+/* Portrait mode optimization */
+@media screen and (max-width: 1024px) and (orientation: portrait) {
+    .oponentes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Ensure game board fits on screen */
+    .tablero {
+        max-width: 100%;
+        padding: 15px 10px;
+    }
+    
+    /* Stack action buttons vertically on smaller screens */
+    #actionButtons,
+    #finalButtons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    #actionButtons button,
+    #finalButtons button {
+        width: 100%;
+    }
+}
+
+/* Landscape mode optimization */
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+    .oponentes-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    
+    .pantalla {
+        padding: 15px 20px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+        margin: 10px 0;
+    }
+}
+
+/* Very small screens */
+@media screen and (max-width: 400px) {
+    .oponentes-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .oponente-btn {
+        max-width: 280px;
+        margin: 0 auto;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .menu-footer button {
+        display: block;
+        width: calc(100% - 20px);
+        max-width: 300px;
+        margin: 10px auto;
+    }
+}
+
+/* Prevent text selection on mobile */
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* But allow selection in input fields if added later */
+input, textarea {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+/* Better active states for touch */
+button:active,
+.oponente-btn:active,
+.tienda-item button:active {
+    transform: scale(0.96);
+    opacity: 0.9;
+}
+
+/* Improve scrolling on mobile */
+.modal-contenido,
+.galeria-pantalla {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Safe area for notched devices */
+@supports (padding-top: env(safe-area-inset-top)) {
+    body {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    .fichas-global-display {
+        top: calc(15px + env(safe-area-inset-top));
+    }
+}

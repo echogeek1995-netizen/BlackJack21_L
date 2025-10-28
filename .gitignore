@@ -1,0 +1,15 @@
+# Replit
+.replit
+.upm
+.cache
+.config
+.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS
+.DS_Store
+Thumbs.db

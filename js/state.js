@@ -1,12 +1,7 @@
 // state.js
 // Estado global + utilidades de guardado/carga
 
-// Config del juego. (ELIMINADO DE AQUÍ. AHORA SE CARGA DESDE config.js)
-
-// Paths de assets
-const ASSET_PATH = './assets/';
-const IMG_PATH = ASSET_PATH + 'img/';
-const VIDEO_PATH = ASSET_PATH + 'video/';
+// Config del juego y paths de assets se cargan desde config.js
 
 // VARIABLES GLOBALES DEL ESTADO DE JUEGO
 let oponenteActual = '';

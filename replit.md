@@ -52,15 +52,16 @@ This is a Spanish-language dice/blackjack web game featuring anime-style opponen
   - **Character Change**: Replaced Seraphina with Marge Simpson
     - All dialogues, interactions, gifts, and trophies updated
     - Marge has unique personality: motherly yet seductive
-  - **Elegant Minimalist UI**:
+  - **Ultra-Transparent Minimalist UI**:
+    - **Gameplay UI completely transparent** - background images shine through
     - Removed opponent avatar during gameplay for cleaner look
-    - Images now shine through as full backgrounds
-    - Glass-morphism design with blur effects
-    - Refined typography with lighter fonts and letter-spacing
-    - Sleeker opponent cards with image-first design
+    - Glass-morphism design with ultra-light blur effects (8px blur)
+    - HUD elements: 15% opacity backgrounds for minimal obstruction
+    - Buttons: 20% transparent with pill-shaped designs (50px border-radius)
     - Enhanced dice animation with golden glow
-    - Modernized buttons with pill-shaped designs
-    - Improved HUD with subtle backgrounds
+    - Refined typography with lighter fonts (300-400 weight) and letter-spacing
+    - "Volver al Menú" button ultra-transparent (15% opacity)
+    - All game controls use backdrop-filter for glass effect
   - Background images now perfectly centered and use full viewport
   - Deployment configured for Autoscale (production-ready)
   - Game fully functional with mobile optimizations

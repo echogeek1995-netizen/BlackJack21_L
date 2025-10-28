@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Dados 21</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="transitionOverlay" class="transition-overlay"></div>
+
+    <div class="fichas-global-display">
+        <i class="fa-solid fa-coins"></i> <span id="fichasJugadorGlobal">0</span>
+    </div>
+
+    <div id="menuInicio" class="pantalla activa">
+        <h1>Elige a tu Oponente</h1>
+        <div class="oponentes-grid">
+
+            <button class="oponente-btn" data-oponente="maria">
+                <img src="./assets/img/OPONENTE_MARIA.png" alt="Maria">
+                <h2>Maria</h2>
+                <p>Nivel Fácil</p>
+                <div class="oponente-apuesta">Apuesta: <span class="apuesta-valor">50</span> <i class="fa-solid fa-coins"></i></div>
+            </button>
+
+            <button class="oponente-btn" data-oponente="jessica">
+                <img src="./assets/img/OPONENTE_JESSICA.png" alt="Lady Jessica">
+                <h2>Lady Jessica</h2>
+                <p>Nivel Medio</p>
+                <div class="oponente-apuesta">Apuesta: <span class="apuesta-valor">100</span> <i class="fa-solid fa-coins"></i></div>
+            </button>
+
+            <button class="oponente-btn" data-oponente="mei">
+                <img src="./assets/img/OPONENTE_MEI.png" alt="Mei">
+                <h2>Mei</h2>
+                <p>Nivel Medio-Alto</p>
+                <div class="oponente-apuesta">Apuesta: <span class="apuesta-valor">150</span> <i class="fa-solid fa-coins"></i></div>
+            </button>
+
+            <button class="oponente-btn" data-oponente="chel">
+                <img src="./assets/img/OPONENTE_CHEL.png" alt="Chel">
+                <h2>Chel</h2>
+                <p>Nivel Difícil</p>
+                <div class="oponente-apuesta">Apuesta: <span class="apuesta-valor">200</span> <i class="fa-solid fa-coins"></i></div>
+            </button>
+
+            <button class="oponente-btn" data-oponente="seraphina">
+                <img src="./assets/img/OPONENTE_SERAPHINA.png" alt="Seraphina">
+                <h2>Seraphina</h2>
+                <p>Nivel Muy Difícil</p>
+                <div class="oponente-apuesta">Apuesta: <span class="apuesta-valor">175</span> <i class="fa-solid fa-coins"></i></div>
+            </button>
+
+            <button class="oponente-btn" data-oponente="miranda">
+                <img src="./assets/img/OPONENTE_MIRANDA.png" alt="Miranda Lawson">
+                <h2>Miranda</h2>
+                <p>Nivel Élite</p>
+                <div class="oponente-apuesta">Apuesta: <span class="apuesta-valor">225</span> <i class="fa-solid fa-coins"></i></div>
+            </button>
+
+            <button class="oponente-btn" data-oponente="nagatoro">
+                <img src="./assets/img/OPONENTE_NAGATORO.png" alt="Nagatoro">
+                <h2>Nagatoro</h2>
+                <p>Nivel Bromista</p>
+                <div class="oponente-apuesta">Apuesta: <span class="apuesta-valor">125</span> <i class="fa-solid fa-coins"></i></div>
+            </button>
+
+        </div>
+
+        <div class="menu-footer">
+            <button id="abrirTiendaBtn"><i class="fa-solid fa-shop"></i> Tienda</button>
+            <button id="abrirGaleriaBtn">Galería</button>
+            <button id="resetProgressBtn" class="secondary-btn">Reiniciar Progreso</button>
+        </div>
+    </div>
+
+    <div id="juego" class="pantalla">
+        <img id="avatarOponenteJuego" class="avatar-juego" src="" alt="Oponente Actual">
+
+        <button id="volverJuego" class="volver-btn floating-menu-btn">Volver al Menú</button>
+
+        <div class="tablero marcador-principal-container">
+            <div class="marcador-total">
+                <div class="marcador jugador-marcador">
+                    <p>Jugador:</p>
+                    <span id="resultadoJugador" class="resultado-puntuacion">0</span>
+                </div>
+                <div class="marcador maquina-marcador">
+                    <p>Máquina:</p>
+                    <span id="resultadoMaquina" class="resultado-puntuacion">0</span>
+                </div>
+            </div>
+
+            <div id="progresoVictorias" class="progreso-victorias-bar">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-regular fa-heart"></i>
+            </div>
+
+            <p id="mensajeGeneral" class="top-status">Elige un Oponente para empezar</p>
+        </div>
+
+        <div id="diceAnimationContainer" class="dice-animation-container">
+            <div id="dado" class="dado">
+                <div class="cara frontal"><span>1</span></div>
+                <div class="cara trasera"><span>6</span></div>
+                <div class="cara derecha"><span>4</span></div>
+                <div class="cara izquierda"><span>3</span></div>
+                <div class="cara arriba"><span>5</span></div>
+                <div class="cara abajo"><span>2</span></div>
+            </div>
+        </div>
+
+        <div id="controlesJuego" class="controles-inferiores">
+            <div id="habilidadesContainer" class="habilidades-container">
+
+                <button id="usarDadoCargadoBtn" class="habilidad-btn item-btn" style="display: none;">
+                    <i class="fa-solid fa-dice-six"></i> Dado Cargado
+                    <span id="cantidadDadosCargados" class="habilidad-cantidad">(0)</span>
+                </button>
+
+                <button id="usarAmuletoBtn" class="habilidad-btn item-btn" style="display: none;">
+                    <i class="fa-solid fa-clover"></i> Amuleto
+                    <span id="cantidadAmuletos" class="habilidad-cantidad">(0)</span>
+                </button>
+
+                <button id="usarTiroSeguroBtn" class="habilidad-btn item-btn" style="display: none;">
+                    <i class="fa-solid fa-shield-halved"></i> Tiro Seguro
+                    <span id="cantidadTirosSeguros" class="habilidad-cantidad">(0)</span>
+                </button>
+
+                <button id="segundoIntentoBtn" class="habilidad-btn accion-btn">
+                    <i class="fa-solid fa-rotate-left"></i> Segundo Intento
+                    <span class="habilidad-costo">(Costo: <span class="segundo-intento-costo"></span> <i class="fa-solid fa-coins"></i>)</span>
+                </button>
+
+                <button id="provocarBtn" class="habilidad-btn accion-btn provocar-btn">
+                    <i class="fa-solid fa-comment-dots"></i> Provocar
+                    <span class="habilidad-costo">(Costo: <span class="provocar-costo"></span> <i class="fa-solid fa-coins"></i>)</span>
+                </button>
+
+                <button id="susurrarBtn" class="habilidad-btn accion-btn susurrar-btn">
+                    <i class="fa-solid fa-volume-low"></i> Susurrar
+                    <span class="habilidad-costo">(Costo: <span class="susurrar-costo"></span> <i class="fa-solid fa-coins"></i>)</span>
+                </button>
+
+            </div>
+
+            <div id="actionButtons">
+                <button id="lanzarJugador">Tirar Dado</button>
+                <button id="pararJugador" style="display: none;">Plantarse</button>
+            </div>
+
+            <div id="finalButtons" style="display: none;">
+                <button id="reiniciar">Menú</button>
+                <button id="jugarOtraVezBtn">Siguiente Ronda</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cita" class="pantalla cita-pantalla">
+        <div class="cita-container">
+            <div id="citaPersonaje" class="cita-personaje"></div>
+            <div class="dialogo-caja">
+                <p id="citaMensaje" class="dialogo-texto">¡Hola! ¿Estás listo para esta cita?</p>
+            </div>
+            <div id="citaRespuestas" class="cita-respuestas"></div>
+            <button id="citaVolverMenu">Volver al Menú</button>
+        </div>
+    </div>
+
+    <div id="galeria" class="pantalla galeria-pantalla">
+        <h1>Galería de Trofeos</h1>
+        <div id="contenedorTrofeos" style="width: 100%; max-width: 1200px;"></div>
+        <button id="cerrarGaleriaBtn">Volver al Menú</button>
+    </div>
+
+    <div id="trofeoModal" class="modal-fondo">
+        <div class="modal-contenido">
+            <button class="cerrar-modal">&times;</button>
+            <h3 id="modalCaption">Trofeo Desbloqueado</h3>
+            <div id="modalMediaContainer">
+                </div>
+            <div id="videoDialogueOverlay"></div>
+        </div>
+    </div>
+
+    <div id="tiendaModal" class="modal-fondo">
+        <div class="modal-contenido" style="max-width: 800px;">
+            <button id="cerrarTiendaBtn" class="cerrar-modal">&times;</button>
+            <h2><i class="fa-solid fa-shop"></i> Tienda</h2>
+            <h3><i class="fa-solid fa-star"></i> Ítems y Mejoras</h3>
+            <div id="tiendaItemsContainer"></div>
+            <hr>
+            <h3><i class="fa-solid fa-gift"></i> Regalos (Desbloquea Escenas)</h3>
+            <div id="tiendaRegalosContainer"></div>
+        </div>
+    </div>
+
+    <div id="empateModal" class="modal-fondo">
+        <div class="modal-contenido">
+            <h3>¡EMPATE!</h3>
+            <p>¡Carta más alta (o baja) gana el desempate!</p>
+            <div>
+                <div id="cartaOponente">?</div>
+                <div id="cartaJugador">?</div>
+            </div>
+            <p id="mensajeEmpate"></p>
+            <div id="controlesEmpate">
+                <button id="apuestaAltaBtn">Más Alta</button>
+                <button id="apuestaBajaBtn">Más Baja</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/state.js"></script>
+
+    <script src="js/data.js"></script>
+
+    <script src="js/ui.js"></script>
+    <script src="js/extras.js"></script>
+    <script src="js/tienda.js"></script>
+    <script src="js/citas.js"></script>
+    <script src="js/galeria.js"></script>
+    <script src="js/game-core.js"></script>
+
+    <script src="js/init.js"></script>
+
+</body>
+</html>

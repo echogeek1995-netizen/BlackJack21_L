@@ -1,0 +1,495 @@
+/* === ESTILO GLOBAL === */
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #111;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    margin: 0;
+    overflow-x: hidden;
+    user-select: none;
+}
+
+/* Pantallas */
+.pantalla {
+    display: none;
+    text-align: center;
+    padding: 30px;
+}
+
+.pantalla.activa {
+    display: block;
+}
+
+h1, h2, h3 {
+    text-shadow: 0 0 8px rgba(255,255,255,0.3);
+}
+
+/* === MENÚ PRINCIPAL === */
+.oponentes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.oponente-btn {
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #666;
+    border-radius: 10px;
+    color: #fff;
+    padding: 10px;
+    width: 220px;
+    transition: 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+
+.oponente-btn:hover {
+    background: rgba(255,255,255,0.15);
+    transform: scale(1.05);
+}
+
+.oponente-btn img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+
+.apuesta-valor {
+    color: #FFD700;
+    font-weight: bold;
+}
+
+.menu-footer {
+    margin-top: 30px;
+}
+
+.menu-footer button {
+    margin: 8px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background: #333;
+    border: 1px solid #555;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.menu-footer button:hover {
+    background: #555;
+}
+
+/* === FICHAS GLOBALES === */
+.fichas-global-display {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.6);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    z-index: 100;
+    font-size: 16px;
+}
+
+/* === HUD DEL JUEGO === */
+.marcador-principal-container {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 600px;
+    color: #fff;
+    display: none; /* oculto al cargar */
+    z-index: 50;
+}
+
+.controles-inferiores {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 600px;
+    flex-direction: column;
+    gap: 10px;
+    display: none; /* oculto al cargar */
+    z-index: 50;
+}
+
+/* Marcadores de puntuación */
+.marcador-total {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.resultado-puntuacion.busted {
+    color: #ff4d4d;
+    animation: shake 0.3s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+/* Controles inferiores */
+.habilidades-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+}
+
+.habilidad-btn {
+    background: #222;
+    color: #fff;
+    border: 1px solid #666;
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.habilidad-btn:hover {
+    background: #333;
+}
+
+.habilidad-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Volver */
+.volver-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.6);
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* === DADO Y ANIMACIÓN === */
+#diceAnimationContainer {
+    display: none;
+    margin: 20px auto;
+    width: 100px;
+    height: 100px;
+    perspective: 600px;
+}
+
+#dado {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+#dado.girando {
+    animation: girarDado 1s infinite linear;
+}
+
+@keyframes girarDado {
+    from { transform: rotateX(0) rotateY(0); }
+    to { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+/* === AVATAR OPONENTE === */
+#avatarOponenteJuego {
+    position: fixed;
+    top: 100px;
+    right: 25px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #FFD700;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+    object-fit: cover;
+    opacity: 0;
+    background: rgba(0,0,0,0.3);
+    transition: opacity 0.5s ease-in-out;
+    z-index: 30;
+}
+
+/* === MENSAJES === */
+#mensajeGeneral {
+    font-size: 18px;
+    margin-top: 10px;
+    min-height: 50px;
+}
+
+.comentario-oponente {
+    font-style: italic;
+    color: #f5b;
+}
+
+/* === MODALES GENERALES === */
+.modal-fondo {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-fondo.abierto {
+    display: flex;
+}
+
+.modal-contenido {
+    background: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    color: #fff;
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+}
+
+.cerrar-modal {
+    position: absolute;
+    top: 5px; right: 10px;
+    font-size: 24px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+#modalMediaContainer img,
+#modalMediaContainer video {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* Overlay de diálogo para videos */
+#videoDialogueOverlay {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.5);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-style: italic;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+/* === GALERÍA === */
+#contenedorTrofeos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.galeria-seccion {
+    margin: 10px;
+    text-align: center;
+}
+
+.galeria-seccion h3 {
+    margin-bottom: 10px;
+}
+
+.trofeo-thumb {
+    display: inline-block;
+    margin: 5px;
+    width: 140px;
+    height: 140px;
+    overflow: hidden;
+    border: 2px solid #444;
+    border-radius: 8px;
+    background: #111;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.trofeo-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.trofeo-thumb.desbloqueado:hover {
+    transform: scale(1.05);
+    border-color: #FFD700;
+}
+
+.trofeo-thumb.bloqueado {
+    opacity: 0.3;
+    filter: grayscale(1);
+    cursor: not-allowed;
+}
+
+.trofeo-thumb.especial {
+    border-color: #ff9be9;
+    box-shadow: 0 0 10px #ff5dd0;
+}
+
+/* === TIENDA === */
+#tiendaItemsContainer,
+#tiendaRegalosContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
+
+.tienda-item {
+    background: rgba(30,30,30,0.8);
+    border: 1px solid #555;
+    border-radius: 10px;
+    padding: 10px;
+    width: 230px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.2s;
+}
+
+.tienda-item:hover {
+    transform: translateY(-4px);
+    border-color: #FFD700;
+}
+
+.tienda-item i {
+    font-size: 28px;
+    color: #FFD700;
+}
+
+.tienda-item h4 {
+    margin: 8px 0 4px;
+}
+
+.tienda-item p {
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+.tienda-item button {
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 6px;
+    padding: 6px 10px;
+    margin-top: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.tienda-item button:hover {
+    background: #555;
+}
+
+.tienda-item button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* === CITA === */
+#citaPersonaje {
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#citaRespuestas button {
+    background: #222;
+    border: 1px solid #555;
+    border-radius: 6px;
+    color: #fff;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#citaRespuestas button:hover {
+    background: #444;
+}
+
+/* === MINIJUEGO DE EMPATE === */
+#empateModal .modal-contenido {
+    text-align: center;
+}
+
+.carta-oculta {
+    filter: blur(5px);
+}
+
+#cartaOponente,
+#cartaJugador {
+    display: inline-block;
+    font-size: 40px;
+    background: #222;
+    border: 2px solid #FFD700;
+    border-radius: 8px;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    margin: 10px;
+}
+
+/* === BOTONES GLOBALES === */
+button {
+    font-family: inherit;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* === SCROLLBAR ESTÉTICA === */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}

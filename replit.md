@@ -58,14 +58,18 @@ This is a Spanish-language dice/blackjack web game featuring anime-style opponen
       - Chips counter: Transparent with strong text shadows (uppercase, 18px)
       - Score display: Transparent with bold shadows for visibility
       - Messages: Smaller (15px), uppercase, strong shadows
-    - **Bottom Controls**: Compact and minimal
-      - Buttons 30% smaller (10px/20px padding, 15px font)
-      - Positioned at screen base with gradient fade
-      - Compact rounded corners (14px radius) instead of full pills
+    - **Bottom Controls**: Iconic videogame-style buttons
+      - **Circular icon-only buttons** (64px diameter)
+      - Icons: Dice (🎲), Hand (✋), House (🏠), Forward (▶)
+      - NO text on buttons - just pure icons
+      - Positioned at absolute bottom (12px from edge)
+      - Transparent background, only visible when needed
       - "Volver al Menú" moved to bottom-left corner
+    - **Habilidades**: Minimal pill-shaped buttons (12px font)
     - **Dice**: Reduced to 100px for less obstruction
     - **Text Visibility**: Strong text-shadow (0 2px 8px black) on all UI text
     - **Design Philosophy**: Like modern mobile games (Genshin Impact style)
+      - Iconic circular buttons like console games
       - Transparent overlays, character dominates screen
       - Minimal UI footprint, gamepad-safe spacing
       - All text legible despite no backgrounds

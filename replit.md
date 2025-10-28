@@ -55,6 +55,10 @@ This is a Spanish-language dice/blackjack web game featuring anime-style opponen
   - Fixed JavaScript loading order (added config.js to index.html)
   - Removed duplicate constant declarations in state.js
   - Configured deployment settings for Autoscale
+  - Added comprehensive mobile optimizations for Android devices (especially Samsung S25 Ultra)
+  - Added mobile-specific meta tags for web app capability
+  - Implemented responsive CSS with touch-friendly buttons and layouts
+  - Created ANDROID_LOCAL_SETUP.md guide for running locally on Android
   - Game is fully functional (character images need to be added to assets/img/)
 
 ## User Preferences
@@ -67,3 +71,6 @@ None documented yet.
 - Character images are expected in `assets/img/` with naming format: `OPONENTE_[NAME].png`
 - Video assets are expected in `assets/video/`
 - The game is fully functional even without images - all game mechanics work correctly
+- Fully optimized for mobile devices with responsive design
+- Works great on Android phones (tested for Samsung S25 Ultra screen size)
+- Can be run locally offline - see ANDROID_LOCAL_SETUP.md for instructions

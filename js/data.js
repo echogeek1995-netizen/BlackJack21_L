@@ -99,18 +99,18 @@ const INTERACCIONES_REGALO = {
         imagen: IMG_PATH + 'MEI_REGALO_CRYO.png'
     },
 
-    // Seraphina
-    'seraphina_tarot': {
-        nombre: 'Baraja de Tarot Antigua',
+    // Marge Simpson
+    'marge_pastel': {
+        nombre: 'Pastel Casero',
         costo: 1600,
-        dialogo: "Estas cartas susurran historias sobre ti... ven, déjame leerte.",
-        imagen: IMG_PATH + 'SERAPHINA_REGALO_TAROT.png'
+        dialogo: "Oh, cariño... has pensado en mí. Este pastel se ve delicioso. *Mmm* Ven, probemos juntos...",
+        imagen: IMG_PATH + 'MARGE_REGALO_PASTEL.png'
     },
-    'seraphina_cristal': {
-        nombre: 'Esfera de Cristal',
+    'marge_collar': {
+        nombre: 'Collar de Perlas',
         costo: 2200,
-        dialogo: "Veo... un futuro brillante. Lleno de riesgo. Y deseo.",
-        imagen: IMG_PATH + 'SERAPHINA_REGALO_CRISTAL.png'
+        dialogo: "¡Oh, Dios mío! Esto es... precioso. Me hace sentir especial. Ven aquí, déjame darte las gracias apropiadamente...",
+        imagen: IMG_PATH + 'MARGE_REGALO_COLLAR.png'
     },
 
     // Miranda
@@ -168,11 +168,11 @@ const TROFEOS = {
         { tipo: 'img', fuente: IMG_PATH + 'MEI_PREMIO_3.png', descripcion: 'A-MEI-zing Victoria' },
         { tipo: 'video', fuente: VIDEO_PATH + 'MEI_TROFEO_FINAL.mp4', descripcion: 'TROFEO FINAL: ¡Derretiste a Mei!' }
     ],
-    'seraphina': [
-        { tipo: 'img', fuente: IMG_PATH + 'SERAPHINA_PREMIO_1.png', descripcion: 'Primer Augurio' },
-        { tipo: 'img', fuente: IMG_PATH + 'SERAPHINA_PREMIO_2.png', descripcion: 'Destino Revelado' },
-        { tipo: 'img', fuente: IMG_PATH + 'SERAPHINA_PREMIO_3.png', descripcion: 'Futuro Sellado' },
-        { tipo: 'video', fuente: VIDEO_PATH + 'SERAPHINA_TROFEO_FINAL.mp4', descripcion: 'TROFEO FINAL: Profecía Cumplida' }
+    'marge': [
+        { tipo: 'img', fuente: IMG_PATH + 'MARGE_PREMIO_1.png', descripcion: 'Marge Impresionada' },
+        { tipo: 'img', fuente: IMG_PATH + 'MARGE_PREMIO_2.png', descripcion: 'Marge Seductora' },
+        { tipo: 'img', fuente: IMG_PATH + 'MARGE_PREMIO_3.png', descripcion: 'La Verdadera Marge' },
+        { tipo: 'video', fuente: VIDEO_PATH + 'MARGE_TROFEO_FINAL.mp4', descripcion: 'TROFEO FINAL: Noche con Marge' }
     ],
     'miranda': [
         { tipo: 'img', fuente: IMG_PATH + 'MIRANDA_PREMIO_1.png', descripcion: 'Confianza Ganada' },
@@ -210,10 +210,10 @@ const CITA_TROFEOS_SECRETOS = {
         fuente: VIDEO_PATH + 'MEI_CITA_SECRETO.mp4',
         descripcion: '¡CITA GANADA CON MEI!'
     },
-    'seraphina': {
+    'marge': {
         tipo: 'video',
-        fuente: VIDEO_PATH + 'SERAPHINA_CITA_SECRETO.mp4',
-        descripcion: '¡CITA GANADA CON SERAPHINA!'
+        fuente: VIDEO_PATH + 'MARGE_CITA_SECRETO.mp4',
+        descripcion: '¡CITA GANADA CON MARGE SIMPSON!'
     },
     'miranda': {
         tipo: 'video',
@@ -269,14 +269,14 @@ const RESPUESTAS_OPONENTES = {
             1: ["Oh, no te desanimes. ¡Puedes hacerlo!", "Ups, se te congeló la suerte."]
         }
     },
-    'seraphina': {
+    'marge': {
         victoria: {
-            1: ["El destino te sonríe, por ahora.", "Las cartas lo insinuaron."],
-            2: ["Dos victorias. Los hilos ya se enredaron.", "Siento una energía peligrosa en ti."],
-            3: ["Estaba escrito. Ven, toma lo que las estrellas te deben."]
+            1: ["¡Oh, muy bien, cariño!", "Tienes talento para esto."],
+            2: ["Dos seguidas... estás resultando interesante.", "*Hmm* Quizás deba prestarte más atención..."],
+            3: ["Tres veces... Eres increíble. Homer nunca... bueno, ven aquí, te mereces un premio especial."]
         },
         derrota: {
-            1: ["Hmm... interesantemente impreciso.", "El futuro es voluble hoy."]
+            1: ["Oh, cariño... no te preocupes.", "La suerte no siempre está de tu lado."]
         }
     },
     'miranda': {
@@ -335,13 +335,13 @@ const COMENTARIOS_EN_JUEGO = {
         oponente_bust: ["Aah, me pasé yo...", "Error de cálculo. Ups."],
         oponente_21: ["¡21! ¡Perfecto!", "Exactamente lo que necesitaba."]
     },
-    'seraphina': {
-        puntuacion_alta: ["Veo fuego en tus manos.", "Las estrellas vibran contigo."],
-        puntuacion_cercana: ["El velo entre la gloria y la ruina es delgado...", "El próximo paso define tu destino."],
-        plantarse: ["Te detienes. Sabio.", "Has elegido escuchar el llamado del destino."],
-        jugador_bust: ["Te aventuraste demasiado en las sombras.", "El hilo se rompió."],
-        oponente_bust: ["Interesante... incluso yo puedo errar.", "La visión estaba nublada."],
-        oponente_21: ["Exactitud profetizada.", "El número del destino."]
+    'marge': {
+        puntuacion_alta: ["Ooh, estás jugando arriesgado, cariño.", "Ten cuidado... o quizás no~"],
+        puntuacion_cercana: ["Estás al límite... como yo cuando Homer olvida nuestro aniversario.", "¿Otro más? *Hmm* Te gusta el peligro..."],
+        plantarse: ["Decisión sensata.", "Sabes cuándo parar. Me gusta eso."],
+        jugador_bust: ["Oh, cariño, te pasaste...", "Hmm-hmm, demasiado ambicioso."],
+        oponente_bust: ["Oh, Dios mío, me pasé.", "Ups... me dejé llevar."],
+        oponente_21: ["¡Perfecto! Como mi cabello.", "Exactamente 21. ¿Impresionado?"]
     },
     'miranda': {
         puntuacion_alta: ["Buen control.", "Estás alineado con el plan."],
@@ -388,11 +388,11 @@ const INTERACCIONES_JUGADOR = {
             "¡Juega limpio!",
             "¿Estás bien?"
         ],
-        'seraphina': [
-            "Tu intento de perturbar el flujo es... predecible.",
-            "¿Crees que las emociones me nublan?",
-            "Nada altera lo escrito.",
-            "Interesante vibración..."
+        'marge': [
+            "Oh, cariño... eso no es muy educado.",
+            "¿Estás intentando ponerme nerviosa? *Hmm-hmm*",
+            "Sabes... Homer intenta lo mismo y nunca funciona.",
+            "¿De verdad crees que eso va a funcionar conmigo?"
         ],
         'miranda': [
             "¿Esa es tu estrategia psicológica? Hm.",
@@ -432,11 +432,11 @@ const INTERACCIONES_JUGADOR = {
             "¿Un secreto científico? ¡Dime!",
             "H-hola..."
         ],
-        'seraphina': [
-            "Tus pensamientos son más ruidosos que tus susurros.",
-            "¿Crees que puedes ocultarme algo?",
-            "El futuro ya me lo dijo.",
-            "Acércate... escuchemos tu destino."
+        'marge': [
+            "Oh... *se sonroja* ¿Qué estás haciendo?",
+            "Tan cerca... me haces sentir... diferente.",
+            "No deberías hablar así a una mujer casada... pero sigue.",
+            "Homer nunca... *suspira* ven más cerca..."
         ],
         'miranda': [
             "Habla. Solo yo escucharé.",
@@ -495,13 +495,13 @@ const CITA_PREGUNTAS = {
             ]
         }
     ],
-    'seraphina': [
+    'marge': [
         {
-            pregunta: "Has visto una chispa del futuro al ganar. ¿Qué crees que nos depara el destino... juntos?",
+            pregunta: "Cariño... has sido tan atento conmigo. ¿Qué buscas realmente?",
             respuestas: [
-                { texto: "Un futuro lleno de pasión y misterio.", correcta: true },
-                { texto: "Más partidas de dados.", correcta: false },
-                { texto: "No creo en el destino, lo forjamos nosotros.", correcta: false }
+                { texto: "Hacerte sentir especial, como te mereces.", correcta: true },
+                { texto: "Solo ganar y conseguir fichas.", correcta: false },
+                { texto: "Pasar el tiempo, nada más.", correcta: false }
             ]
         }
     ],
@@ -541,8 +541,8 @@ const CITA_POST_VICTORIA_DIALOGO = {
     'mei': [
         ["¡Correcto! ¡Pienso igual!", "Las formalidades ya no importan...", "Podríamos... experimentar... juntos."]
     ],
-    'seraphina': [
-        ["Tu energía... es peligrosa.", "Y me encanta.", "Ven. Ahora."]
+    'marge': [
+        ["Oh... cariño.", "Hace tanto que no me sentía así.", "Ven aquí, no tengas miedo..."]
     ],
     'miranda': [
         ["Eficiencia confirmada.", "Confianza establecida.", "Esto ya es entre tú y yo."]
@@ -558,7 +558,7 @@ const CITA_VIDEO_DIALOGO = {
     'jessica': ["Mantén el control.", "No rompas el ritmo.", "Te quiero enfocado."],
     'chel': ["Ahh~ sí...", "Más, doradito...", "No pares."],
     'mei': ["¡Así! ¡Qué cálido!", "N-no pares...", "Esto es... a-mei-zing..."],
-    'seraphina': ["Siente el destino.", "Más profundo...", "Estaba escrito."],
+    'marge': ["Oh, Dios mío...", "*Hmm-hmm*~ Sí...", "Esto es... increíble..."],
     'miranda': ["Silencio. Concéntrate en mí.", "Esto es confidencial.", "Nadie más ve esto."],
     'nagatoro': ["N-no me mires así...", "B-baka...", "No se lo digas a nadie, ¿ok?"]
 };
@@ -569,7 +569,7 @@ const RONDA_FINAL_VIDEO_DIALOGO = {
     'jessica': ["Has pasado mi examen.", "Ahora eres mío.", "Así..."],
     'chel': ["Mío. ¿Entendiste?", "Ven acá, doradito~", "No te escapes."],
     'mei': ["Oh... esto es intenso.", "Déjame calentarte...", "Quiero quedarme así."],
-    'seraphina': ["Siente cómo el destino te envuelve.", "Saborea el ahora.", "Shh..."],
+    'marge': ["Mmm... esto es mejor que cualquier cosa en Springfield.", "Sigue así, cariño...", "Homer nunca..."],
     'miranda': ["Clasificación: privada.", "Acceso concedido solo a ti.", "Quédate."],
     'nagatoro': ["M-mira para otro lado, bobo...", "Te dejo, pero solo hoy.", "No digas nada."]
 };

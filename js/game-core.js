@@ -44,7 +44,7 @@ function iniciarRonda(oponente) {
         jessica: 'JESSICA',
         chel: 'CHEL',
         mei: 'MEI',
-        seraphina: 'SERAPHINA',
+        marge: 'MARGE',
         miranda: 'MIRANDA',
         nagatoro: 'NAGATORO'
     };
@@ -268,7 +268,7 @@ function turnoMaquina(repetirUltimoTiro = false) {
     let umbralParada = 17;
     if (oponenteActual === 'maria') umbralParada = 16;
     else if (oponenteActual === 'jessica' || oponenteActual === 'mei') umbralParada = 18;
-    else if (oponenteActual === 'chel' || oponenteActual === 'seraphina' || oponenteActual === 'miranda') umbralParada = 19;
+    else if (oponenteActual === 'chel' || oponenteActual === 'marge' || oponenteActual === 'miranda') umbralParada = 19;
     else if (oponenteActual === 'nagatoro') umbralParada = 17;
 
     let puntuacionPrevia = puntuacionMaquina;

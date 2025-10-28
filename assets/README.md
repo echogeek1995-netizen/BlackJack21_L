@@ -21,7 +21,7 @@ This folder contains all game assets (images and videos).
 - OPONENTE_JESSICA.png
 - OPONENTE_MEI.png
 - OPONENTE_CHEL.png
-- OPONENTE_SERAPHINA.png
+- OPONENTE_MARGE.png (replaces Seraphina)
 - OPONENTE_MIRANDA.png
 - OPONENTE_NAGATORO.png
 
@@ -30,7 +30,7 @@ This folder contains all game assets (images and videos).
 - OPONENTE_JESSICA_CITA.png
 - OPONENTE_MEI_CITA.png
 - OPONENTE_CHEL_CITA.png
-- OPONENTE_SERAPHINA_CITA.png
+- OPONENTE_MARGE_CITA.png (replaces Seraphina)
 - OPONENTE_MIRANDA_CITA.png
 - OPONENTE_NAGATORO_CITA.png
 

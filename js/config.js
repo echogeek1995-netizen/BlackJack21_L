@@ -16,7 +16,7 @@ const JUEGO_CONFIG = {
         jessica: 100,
         mei: 150,
         chel: 200,
-        seraphina: 175,
+        marge: 175,
         miranda: 225,
         nagatoro: 125
     },
@@ -29,7 +29,7 @@ const JUEGO_CONFIG = {
         jessica: 7,
         mei: 8,
         chel: 10,
-        seraphina: 9,
+        marge: 9,
         miranda: 11,
         nagatoro: 6
     }

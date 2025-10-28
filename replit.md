@@ -43,20 +43,27 @@ This is a Spanish-language dice/blackjack web game featuring anime-style opponen
 - Lady Jessica (Medium)
 - Mei (Medium-High)
 - Chel (Hard)
-- Seraphina (Very Hard)
+- Marge Simpson (Very Hard) - Replaces Seraphina
 - Miranda (Elite)
 - Nagatoro (Trickster)
 
 ## Recent Changes
-- 2025-10-28: Successfully imported from GitHub and configured for Replit environment
-  - Python 3.12.11 detected and ready
-  - Configured workflow "Server" to run Python HTTP server on port 5000
-  - Server configured with cache-control headers disabled for development
-  - Created assets/img/ and assets/video/ directories for game media
+- 2025-10-28: Major UI overhaul and character replacement
+  - **Character Change**: Replaced Seraphina with Marge Simpson
+    - All dialogues, interactions, gifts, and trophies updated
+    - Marge has unique personality: motherly yet seductive
+  - **Elegant Minimalist UI**:
+    - Removed opponent avatar during gameplay for cleaner look
+    - Images now shine through as full backgrounds
+    - Glass-morphism design with blur effects
+    - Refined typography with lighter fonts and letter-spacing
+    - Sleeker opponent cards with image-first design
+    - Enhanced dice animation with golden glow
+    - Modernized buttons with pill-shaped designs
+    - Improved HUD with subtle backgrounds
+  - Background images now perfectly centered and use full viewport
   - Deployment configured for Autoscale (production-ready)
-  - Game verified working - all 7 opponents displayed with correct betting amounts
-  - Game fully functional (character images optional - can be added to assets/img/)
-  - Previous setup: JS files organized in js/ folder, mobile optimizations complete
+  - Game fully functional with mobile optimizations
 
 ## User Preferences
 None documented yet.

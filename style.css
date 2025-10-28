@@ -17,72 +17,103 @@ body {
 .pantalla {
     display: none;
     text-align: center;
-    padding: 30px;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .pantalla.activa {
-    display: block;
+    display: flex;
 }
 
 h1, h2, h3 {
-    text-shadow: 0 0 8px rgba(255,255,255,0.3);
+    text-shadow: 0 0 15px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.5);
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
 }
 
 /* === MENÚ PRINCIPAL === */
 .oponentes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
     justify-items: center;
-    padding: 10px;
-    max-width: 1400px;
+    padding: 20px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .oponente-btn {
-    background: linear-gradient(145deg, rgba(30, 30, 30, 0.95), rgba(10, 10, 10, 0.95));
-    border: 2px solid rgba(255, 215, 0, 0.3);
-    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
     color: #fff;
-    padding: 15px;
-    width: 220px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0;
+    width: 200px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     position: relative;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
     overflow: hidden;
+    backdrop-filter: blur(10px);
 }
 
 .oponente-btn::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,215,0,0.1), transparent);
-    transition: left 0.5s;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
 }
 
 .oponente-btn:hover::before {
-    left: 100%;
+    opacity: 1;
 }
 
 .oponente-btn:hover {
-    background: linear-gradient(145deg, rgba(40, 40, 40, 0.95), rgba(20, 20, 20, 0.95));
-    border-color: rgba(255, 215, 0, 0.8);
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3), 0 0 30px rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.6);
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 60px rgba(255, 215, 0, 0.3);
 }
 
 .oponente-btn img {
     width: 100%;
-    height: 260px;
+    height: 280px;
     object-fit: cover;
     object-position: center;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    border-radius: 20px 20px 0 0;
+    margin: 0;
+    box-shadow: none;
+    filter: brightness(1.1) contrast(1.05);
+}
+
+.oponente-btn h2 {
+    margin: 15px 0 5px;
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.oponente-btn p {
+    margin: 5px 0;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    font-weight: 300;
+}
+
+.oponente-btn .oponente-apuesta {
+    padding: 15px;
+    font-size: 0.9rem;
 }
 
 .apuesta-valor {
@@ -96,62 +127,71 @@ h1, h2, h3 {
 
 .menu-footer button {
     margin: 8px;
-    padding: 12px 24px;
-    border-radius: 10px;
-    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-    border: 2px solid #444;
+    padding: 14px 28px;
+    border-radius: 25px;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.2);
     color: #fff;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    letter-spacing: 1px;
 }
 
 .menu-footer button:hover {
-    background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
-    border-color: #FFD700;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(255, 215, 0, 0.2);
+    background: rgba(255,215,0,0.2);
+    border-color: rgba(255, 215, 0, 0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
 }
 
 /* === FICHAS GLOBALES === */
 .fichas-global-display {
     position: fixed;
-    top: 15px;
-    right: 15px;
-    background: linear-gradient(145deg, rgba(30,30,30,0.95), rgba(10,10,10,0.95));
-    padding: 10px 16px;
-    border-radius: 12px;
-    font-weight: bold;
+    top: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.4);
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: 400;
     z-index: 100;
-    font-size: 18px;
-    border: 2px solid rgba(255, 215, 0, 0.4);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.6), 0 0 20px rgba(255, 215, 0, 0.15);
+    font-size: 20px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    letter-spacing: 1px;
 }
 
 /* === HUD DEL JUEGO === */
 .marcador-principal-container {
     position: fixed;
-    top: 10px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 95%;
-    max-width: 600px;
+    width: 90%;
+    max-width: 500px;
     color: #fff;
     display: none; /* oculto al cargar */
     z-index: 50;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    padding: 15px 20px;
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 .controles-inferiores {
     position: fixed;
-    bottom: 10px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 95%;
-    max-width: 600px;
+    width: 90%;
+    max-width: 500px;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     display: none; /* oculto al cargar */
     z-index: 50;
 }
@@ -222,57 +262,61 @@ h1, h2, h3 {
 /* === DADO Y ANIMACIÓN === */
 #diceAnimationContainer {
     display: none;
-    margin: 20px auto;
-    width: 100px;
-    height: 100px;
-    perspective: 600px;
+    margin: 40px auto;
+    width: 120px;
+    height: 120px;
+    perspective: 1000px;
+    filter: drop-shadow(0 10px 30px rgba(255,215,0,0.5));
 }
 
 #dado {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 1s;
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #dado.girando {
-    animation: girarDado 1s infinite linear;
+    animation: girarDado 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 @keyframes girarDado {
-    from { transform: rotateX(0) rotateY(0); }
-    to { transform: rotateX(360deg) rotateY(360deg); }
+    0% { transform: rotateX(0) rotateY(0); }
+    100% { transform: rotateX(720deg) rotateY(720deg); }
+}
+
+.dado .cara {
+    background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(230,230,230,0.95));
+    border: 2px solid rgba(255,215,0,0.8);
+    box-shadow: 0 0 20px rgba(255,215,0,0.6), inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+.dado .cara span {
+    color: #000;
+    font-weight: 700;
+    text-shadow: 0 2px 5px rgba(255,215,0,0.5);
 }
 
 /* === AVATAR OPONENTE === */
 #avatarOponenteJuego {
-    position: fixed;
-    top: 50%;
-    right: 15px;
-    transform: translateY(-50%);
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    border: 4px solid #FFD700;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.7), 0 0 20px rgba(255,215,0,0.3);
-    object-fit: cover;
-    opacity: 0;
-    background: rgba(0,0,0,0.5);
-    transition: all 0.5s ease-in-out;
-    z-index: 30;
+    display: none !important; /* Hidden for minimalist UI - images shine through background */
 }
 
 /* === MENSAJES === */
 #mensajeGeneral {
     font-size: 18px;
-    margin-top: 10px;
+    margin-top: 15px;
     min-height: 50px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
 }
 
 .comentario-oponente {
     font-style: italic;
-    color: #f5b;
+    color: #ff9be9;
+    font-weight: 400;
 }
 
 /* === MODALES GENERALES === */

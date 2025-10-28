@@ -52,16 +52,23 @@ This is a Spanish-language dice/blackjack web game featuring anime-style opponen
   - **Character Change**: Replaced Seraphina with Marge Simpson
     - All dialogues, interactions, gifts, and trophies updated
     - Marge has unique personality: motherly yet seductive
-  - **Ultra-Transparent Minimalist UI**:
-    - **Gameplay UI completely transparent** - background images shine through
-    - Removed opponent avatar during gameplay for cleaner look
-    - Glass-morphism design with ultra-light blur effects (8px blur)
-    - HUD elements: 15% opacity backgrounds for minimal obstruction
-    - Buttons: 20% transparent with pill-shaped designs (50px border-radius)
-    - Enhanced dice animation with golden glow
-    - Refined typography with lighter fonts (300-400 weight) and letter-spacing
-    - "Volver al Menú" button ultra-transparent (15% opacity)
-    - All game controls use backdrop-filter for glass effect
+  - **Mobile Game UI - Character-Centric Design**:
+    - **Character is the focal point** - UI minimized to let background images dominate
+    - **Top HUD**: Fully transparent (no backgrounds), only text visible
+      - Chips counter: Transparent with strong text shadows (uppercase, 18px)
+      - Score display: Transparent with bold shadows for visibility
+      - Messages: Smaller (15px), uppercase, strong shadows
+    - **Bottom Controls**: Compact and minimal
+      - Buttons 30% smaller (10px/20px padding, 15px font)
+      - Positioned at screen base with gradient fade
+      - Compact rounded corners (14px radius) instead of full pills
+      - "Volver al Menú" moved to bottom-left corner
+    - **Dice**: Reduced to 100px for less obstruction
+    - **Text Visibility**: Strong text-shadow (0 2px 8px black) on all UI text
+    - **Design Philosophy**: Like modern mobile games (Genshin Impact style)
+      - Transparent overlays, character dominates screen
+      - Minimal UI footprint, gamepad-safe spacing
+      - All text legible despite no backgrounds
   - Background images now perfectly centered and use full viewport
   - Deployment configured for Autoscale (production-ready)
   - Game fully functional with mobile optimizations

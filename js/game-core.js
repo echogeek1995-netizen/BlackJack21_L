@@ -509,10 +509,10 @@ function mostrarJuego(oponente) {
     if (hudTop) hudTop.style.display = 'block';
     if (hudBottom) hudBottom.style.display = 'flex';
     
-    // Expandir el panel de habilidades al entrar al juego
+    // Asegurar que el panel de habilidades esté colapsado al entrar
     const habilidadesContainer = document.getElementById('habilidadesContainer');
     if (habilidadesContainer) {
-        habilidadesContainer.classList.remove('collapsed');
+        habilidadesContainer.classList.add('collapsed');
     }
 
     if (typeof iniciarRonda === 'function') {

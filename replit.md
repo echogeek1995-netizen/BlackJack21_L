@@ -48,6 +48,20 @@ This is a Spanish-language dice/blackjack web game featuring anime-style opponen
 - Nagatoro (Trickster)
 
 ## Recent Changes
+- 2025-10-29: Enhanced gallery design and repositioned toggle button
+  - **Artistic Gallery Redesign**: Beautiful purple-themed gallery with modern UI
+    - Purple gradient background with atmospheric lighting
+    - Responsive CSS Grid layout (auto-fill, minmax 250px)
+    - Card-based design with glass-morphism effect
+    - Hover animations: cards lift up with purple glow
+    - Trophy thumbnails with golden borders and zoom effects
+    - Locked trophies: blurred, grayscale with 🔒 emoji overlay
+    - Special trophies: pink borders with pulsing glow animation
+    - Styled close button with purple theme
+  - **Toggle Button Repositioned**: Moved to middle-right for better accessibility
+    - Position: right side, vertically centered
+    - Never blocks game content or other UI elements
+    - Easy thumb reach on mobile devices
 - 2025-10-29: Added fun interactive effects and fixed critical UX issues
   - **Fun Interactive Effects**: Game now feels more alive and engaging!
     - **Victory Celebration**: Confetti animation when player wins

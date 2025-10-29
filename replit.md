@@ -56,11 +56,13 @@ This is a Spanish-language dice/blackjack web game featuring anime-style opponen
     - **Score Pop**: Score numbers animate with pop effect
     - **Vibration Feedback**: Device vibrates on victories (mobile only)
     - All effects use window.functionName guards to prevent runtime errors
-  - **Abilities Panel Fixed**: Now properly accessible during gameplay
-    - Starts **expanded** when match begins (not collapsed)
-    - Toggle button works perfectly during gameplay
-    - Increased max-height to 500px to show all abilities
+  - **Abilities Panel Fixed**: Clean toggle behavior that doesn't block gameplay
+    - Starts **collapsed** when match begins (toggle button to open)
+    - Purple magic wand button to show/hide abilities when needed
+    - `pointer-events: none` when collapsed prevents blocking game controls
+    - Increased max-height to 500px to show all abilities when expanded
     - Smooth cubic-bezier transitions for expand/collapse
+    - Correctly resets to collapsed state when returning to game from menu
   - **Background System Improved**: Shows first trophy image on game start
     - Displays TROFEOS[opponent][0] instead of black screen or portrait
     - Progresses through trophy images (indices 1, 2) as player wins

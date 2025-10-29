@@ -142,14 +142,15 @@ function actualizarBotonGaleria() {
 
 // Cambia el fondo global según progreso con el oponente actual
 function actualizarFondoJuego() {
-    let premioIndex = -1;
-
     if (!oponenteActual || !TROFEOS[oponenteActual]) {
         document.body.style.backgroundImage = "none";
         return;
     }
 
-    // lógica de qué trofeo usar para el fondo
+    // Siempre usar la primera imagen del trofeo como base (inicio del juego)
+    // Luego actualizar según victorias
+    let premioIndex = 0; // Siempre empezar con la primera imagen
+
     if (victoriasJugador === 3 && progresoCita[oponenteActual] !== 'exito') {
         premioIndex = 2;
     } else if (victoriasJugador === 2) {
@@ -157,45 +158,14 @@ function actualizarFondoJuego() {
     } else if (victoriasJugador === 1) {
         premioIndex = 0;
     }
+    // victoriasJugador === 0 también usa premioIndex = 0 (primera imagen)
 
-    const premio = (premioIndex !== -1)
-        ? TROFEOS[oponenteActual][premioIndex]
-        : null;
-
-    // Si no hay premio desbloqueado (inicio del juego), intentar mostrar retrato principal del oponente
-    if (!premio) {
-        const oponenteImgKeyMap = {
-            maria: 'MARIA',
-            jessica: 'JESSICA',
-            chel: 'CHEL',
-            mei: 'MEI',
-            marge: 'MARGE',
-            miranda: 'MIRANDA',
-            nagatoro: 'NAGATORO'
-        };
-        const oponenteImgKey = oponenteImgKeyMap[oponenteActual] || 'DEFAULT';
-        const portraitPath = `${IMG_PATH}OPONENTE_${oponenteImgKey}.png`;
-        
-        // Capturar el oponente actual para prevenir race conditions
-        const currentOpponent = oponenteActual;
-        
-        // Intentar cargar la imagen del oponente, si no existe, usar fondo negro
-        const testImg = new Image();
-        testImg.onload = function() {
-            // Solo aplicar si el oponente no ha cambiado
-            if (oponenteActual === currentOpponent) {
-                document.body.style.backgroundImage = `url(${portraitPath})`;
-            }
-        };
-        testImg.onerror = function() {
-            // Solo aplicar si el oponente no ha cambiado
-            if (oponenteActual === currentOpponent) {
-                document.body.style.backgroundImage = "none";
-            }
-        };
-        testImg.src = portraitPath;
-    } else {
+    const premio = TROFEOS[oponenteActual][premioIndex];
+    
+    if (premio) {
         document.body.style.backgroundImage = `url(${premio.fuente})`;
+    } else {
+        document.body.style.backgroundImage = "none";
     }
 }
 
@@ -205,6 +175,11 @@ function animarPuntuacion(elementoId, valor) {
     if (!elemento) return;
 
     elemento.textContent = valor;
+    
+    // Añadir efecto de pop al actualizar puntuación
+    elemento.classList.remove('score-pop');
+    void elemento.offsetWidth; // Force reflow
+    elemento.classList.add('score-pop');
     elemento.classList.toggle('busted', valor > 21);
 }
 
@@ -290,10 +265,24 @@ function animarDado(resultado, callback) {
 
     container.style.display = 'block';
     dado.classList.add('girando');
+    
+    // Crear partículas alrededor del dado
+    const rect = container.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    if (window.crearParticulas && typeof window.crearParticulas === 'function') {
+        window.crearParticulas(centerX, centerY, '🎲');
+    }
 
     setTimeout(() => {
         dado.classList.remove('girando');
         posicionarDado(resultado);
+        
+        // Añadir bounce al mostrar resultado
+        if (window.bounceElement && typeof window.bounceElement === 'function') {
+            window.bounceElement('dado');
+        }
+        
         setTimeout(() => {
             container.style.display = 'none';
             if (callback) callback();
@@ -366,5 +355,91 @@ function mostrarModal(premio, oponenteKey, esSuperTrofeo = false, esTrofeoFinalR
         }, 4500);
     } else if (dialogueOverlay) {
         dialogueOverlay.style.opacity = '0';
+    }
+}
+
+// === FUN INTERACTIVE EFFECTS ===
+
+// Crear confetti cuando el jugador gana
+function lanzarConfetti() {
+    const colors = ['#FFD700', '#FFA500', '#FF69B4', '#00CED1', '#9370DB', '#32CD32'];
+    const confettiCount = 30;
+    
+    for (let i = 0; i < confettiCount; i++) {
+        setTimeout(() => {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.width = (Math.random() * 10 + 5) + 'px';
+            confetti.style.height = confetti.style.width;
+            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            confetti.style.animationDelay = (Math.random() * 0.5) + 's';
+            
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => confetti.remove(), 3500);
+        }, i * 50);
+    }
+}
+
+// Crear partículas cuando se lanza el dado
+function crearParticulas(x, y, emoji = '✨') {
+    const particleCount = 8;
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.textContent = emoji;
+        particle.style.left = x + 'px';
+        particle.style.top = y + 'px';
+        particle.style.fontSize = (Math.random() * 20 + 15) + 'px';
+        
+        const angle = (Math.PI * 2 * i) / particleCount;
+        const distance = Math.random() * 50 + 30;
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance;
+        
+        particle.style.setProperty('--tx', tx + 'px');
+        particle.style.setProperty('--ty', ty + 'px');
+        
+        document.body.appendChild(particle);
+        
+        setTimeout(() => particle.remove(), 1500);
+    }
+}
+
+// Animar elemento con pulse
+function pulseElement(elementId) {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+    
+    element.classList.remove('pulse-animation');
+    void element.offsetWidth;
+    element.classList.add('pulse-animation');
+    
+    setTimeout(() => element.classList.remove('pulse-animation'), 500);
+}
+
+// Animar elemento con bounce
+function bounceElement(elementId) {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+    
+    element.classList.remove('bounce-animation');
+    void element.offsetWidth;
+    element.classList.add('bounce-animation');
+    
+    setTimeout(() => element.classList.remove('bounce-animation'), 1000);
+}
+
+// Efecto de celebración cuando el jugador gana
+function celebrarVictoria() {
+    lanzarConfetti();
+    pulseElement('resultadoJugador');
+    
+    // Vibrar si está disponible
+    if ('vibrate' in navigator) {
+        navigator.vibrate([100, 50, 100, 50, 200]);
     }
 }

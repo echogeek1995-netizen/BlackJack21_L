@@ -347,6 +347,11 @@ function finalizarRonda(jugadorGana) {
     if (jugadorGana) {
         fichasJugador += apuestaActual;
 
+        // ¡CELEBRAR VICTORIA CON EFECTOS!
+        if (window.celebrarVictoria && typeof window.celebrarVictoria === 'function') {
+            window.celebrarVictoria();
+        }
+
         // aumenta racha
         victoriasJugador = Math.min(victoriasJugador + 1, 3);
 
@@ -503,6 +508,12 @@ function mostrarJuego(oponente) {
     const hudBottom = document.querySelector('.controles-inferiores');
     if (hudTop) hudTop.style.display = 'block';
     if (hudBottom) hudBottom.style.display = 'flex';
+    
+    // Expandir el panel de habilidades al entrar al juego
+    const habilidadesContainer = document.getElementById('habilidadesContainer');
+    if (habilidadesContainer) {
+        habilidadesContainer.classList.remove('collapsed');
+    }
 
     if (typeof iniciarRonda === 'function') {
         iniciarRonda(oponente);

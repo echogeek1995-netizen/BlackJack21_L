@@ -101,6 +101,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Toggle de habilidades ---
+    const toggleHabilidadesBtn = document.getElementById('toggleHabilidadesBtn');
+    const habilidadesContainer = document.getElementById('habilidadesContainer');
+    if (toggleHabilidadesBtn && habilidadesContainer) {
+        toggleHabilidadesBtn.addEventListener('click', () => {
+            habilidadesContainer.classList.toggle('collapsed');
+        });
+    }
+
     // --- Habilidades en partida (SECCIÓN CORREGIDA) ---
     const segundoIntentoBtn = document.getElementById('segundoIntentoBtn');
     if (segundoIntentoBtn) {

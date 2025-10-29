@@ -162,9 +162,41 @@ function actualizarFondoJuego() {
         ? TROFEOS[oponenteActual][premioIndex]
         : null;
 
-    document.body.style.backgroundImage = premio
-        ? `url(${premio.fuente})`
-        : "none";
+    // Si no hay premio desbloqueado (inicio del juego), intentar mostrar retrato principal del oponente
+    if (!premio) {
+        const oponenteImgKeyMap = {
+            maria: 'MARIA',
+            jessica: 'JESSICA',
+            chel: 'CHEL',
+            mei: 'MEI',
+            marge: 'MARGE',
+            miranda: 'MIRANDA',
+            nagatoro: 'NAGATORO'
+        };
+        const oponenteImgKey = oponenteImgKeyMap[oponenteActual] || 'DEFAULT';
+        const portraitPath = `${IMG_PATH}OPONENTE_${oponenteImgKey}.png`;
+        
+        // Capturar el oponente actual para prevenir race conditions
+        const currentOpponent = oponenteActual;
+        
+        // Intentar cargar la imagen del oponente, si no existe, usar fondo negro
+        const testImg = new Image();
+        testImg.onload = function() {
+            // Solo aplicar si el oponente no ha cambiado
+            if (oponenteActual === currentOpponent) {
+                document.body.style.backgroundImage = `url(${portraitPath})`;
+            }
+        };
+        testImg.onerror = function() {
+            // Solo aplicar si el oponente no ha cambiado
+            if (oponenteActual === currentOpponent) {
+                document.body.style.backgroundImage = "none";
+            }
+        };
+        testImg.src = portraitPath;
+    } else {
+        document.body.style.backgroundImage = `url(${premio.fuente})`;
+    }
 }
 
 // UI numeritos jugador / máquina

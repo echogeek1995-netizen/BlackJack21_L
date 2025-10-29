@@ -48,6 +48,17 @@ This is a Spanish-language dice/blackjack web game featuring anime-style opponen
 - Nagatoro (Trickster)
 
 ## Recent Changes
+- 2025-10-29: Enhanced mobile UX with collapsible abilities and dynamic backgrounds
+  - **Collapsible Abilities Panel**: Added toggle button (magic wand icon) to show/hide abilities
+    - Purple circular button positioned above action controls
+    - Smooth CSS transitions (max-height, opacity) for expand/collapse
+    - Starts collapsed to minimize screen clutter
+    - Click to expand when needed, keeps character visible
+  - **Dynamic Background Images**: Opponent portraits now display on game start
+    - Shows OPONENTE_*.png as background when no prizes unlocked
+    - Graceful fallback to black if portrait image doesn't exist
+    - Race condition prevention ensures correct opponent portrait displays
+    - Automatically works when portrait images are uploaded
 - 2025-10-28: Major UI overhaul and character replacement
   - **Character Change**: Replaced Seraphina with Marge Simpson
     - All dialogues, interactions, gifts, and trophies updated

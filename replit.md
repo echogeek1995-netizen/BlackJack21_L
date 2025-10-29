@@ -48,17 +48,27 @@ This is a Spanish-language dice/blackjack web game featuring anime-style opponen
 - Nagatoro (Trickster)
 
 ## Recent Changes
-- 2025-10-29: Enhanced mobile UX with collapsible abilities and dynamic backgrounds
-  - **Collapsible Abilities Panel**: Added toggle button (magic wand icon) to show/hide abilities
-    - Purple circular button positioned above action controls
-    - Smooth CSS transitions (max-height, opacity) for expand/collapse
-    - Starts collapsed to minimize screen clutter
-    - Click to expand when needed, keeps character visible
-  - **Dynamic Background Images**: Opponent portraits now display on game start
-    - Shows OPONENTE_*.png as background when no prizes unlocked
-    - Graceful fallback to black if portrait image doesn't exist
-    - Race condition prevention ensures correct opponent portrait displays
-    - Automatically works when portrait images are uploaded
+- 2025-10-29: Added fun interactive effects and fixed critical UX issues
+  - **Fun Interactive Effects**: Game now feels more alive and engaging!
+    - **Victory Celebration**: Confetti animation when player wins
+    - **Dice Particles**: Emoji particles (🎲) fly around dice during rolls
+    - **Bounce Animations**: Dice bounces when showing result
+    - **Score Pop**: Score numbers animate with pop effect
+    - **Vibration Feedback**: Device vibrates on victories (mobile only)
+    - All effects use window.functionName guards to prevent runtime errors
+  - **Abilities Panel Fixed**: Now properly accessible during gameplay
+    - Starts **expanded** when match begins (not collapsed)
+    - Toggle button works perfectly during gameplay
+    - Increased max-height to 500px to show all abilities
+    - Smooth cubic-bezier transitions for expand/collapse
+  - **Background System Improved**: Shows first trophy image on game start
+    - Displays TROFEOS[opponent][0] instead of black screen or portrait
+    - Progresses through trophy images (indices 1, 2) as player wins
+    - Graceful fallback to 'none' if trophy images don't exist yet
+  - **Technical Improvements**:
+    - All effect functions use runtime guards (`window.functionName`)
+    - Prevents ReferenceError from script load order variations
+    - Enhanced CSS animations: pulse, bounce, sparkle, confetti-fall, particle-float, score-pop
 - 2025-10-28: Major UI overhaul and character replacement
   - **Character Change**: Replaced Seraphina with Marge Simpson
     - All dialogues, interactions, gifts, and trophies updated

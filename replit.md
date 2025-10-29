@@ -63,7 +63,8 @@ This is a Spanish-language dice/blackjack web game featuring anime-style opponen
     - Increased max-height to 500px to show all abilities when expanded
     - Smooth cubic-bezier transitions for expand/collapse
     - Correctly resets to collapsed state when returning to game from menu
-    - Toggle button always stays on top (z-index: 100) - never blocked by game buttons
+    - Toggle button moved outside container - completely independent element
+    - Toggle button always stays on top (z-index: 100) - never blocked by any UI elements
   - **Background System Improved**: Shows first trophy image on game start
     - Displays TROFEOS[opponent][0] instead of black screen or portrait
     - Progresses through trophy images (indices 1, 2) as player wins
